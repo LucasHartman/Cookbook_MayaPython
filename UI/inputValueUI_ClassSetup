@@ -1,0 +1,30 @@
+import maya.cmds as cmds
+
+class Main(object):
+	def __init__(self):
+		
+		cmds.window()
+		cmds.columnLayout()
+		self.num = cmds.intField(changeCommand = 'callback()') 
+		#self.txt = cmds textField(changeCommand = 'callback_text()')
+		cmds.button( label='Button 1', command= self.myFunction )
+		cmds.showWindow()
+			
+	def callback(self):
+		number = cmds.intField(self.num, q=1, v=1)
+		return number
+
+	def callback_text(self):
+		txt = cmds.textField(self.txt, q=1)
+		return txt
+		
+	def myFunction(self, args):
+		getInt = self.callback()
+		#gettxt = self.callback_text()
+		print(getInt)
+		#print(gettxt)
+	
+
+	
+		
+Main()
